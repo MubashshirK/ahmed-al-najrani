@@ -12,6 +12,8 @@ interface ShapeConfig {
   scale: number
   velocity: [number, number, number]
   bounds: Bounds
+  color: string
+  emissive: string
 }
 
 function Shape({ config }: { config: ShapeConfig }) {
@@ -47,8 +49,8 @@ function Shape({ config }: { config: ShapeConfig }) {
     <mesh ref={meshRef} position={config.position} scale={config.scale}>
       {config.geometry}
       <meshStandardMaterial
-        color="#a3a3a3"
-        emissive="#d4d4d4"
+        color={config.color}
+        emissive={config.emissive}
         emissiveIntensity={0.25}
         wireframe
         transparent
@@ -68,6 +70,8 @@ export default function FloatingMesh() {
       scale: 0.9,
       velocity: [0.3, 0.2, -0.15],
       bounds: { x: [-3.5, 3.5], y: [-2.4, 1.6], z: [-3.5, 2] },
+      color: "#8899bb",
+      emissive: "#aabbdd",
     },
     {
       geometry: <octahedronGeometry args={[1, 0]} />,
@@ -75,6 +79,8 @@ export default function FloatingMesh() {
       scale: 0.8,
       velocity: [-0.25, 0.35, 0.2],
       bounds: { x: [-3.5, 3.5], y: [-2.4, 1.6], z: [-3.5, 2] },
+      color: "#88aa99",
+      emissive: "#aaddbb",
     },
     {
       geometry: <dodecahedronGeometry args={[1, 0]} />,
@@ -82,6 +88,8 @@ export default function FloatingMesh() {
       scale: 1,
       velocity: [0.15, -0.2, 0.25],
       bounds: { x: [-3.5, 3.5], y: [-2.4, 1.6], z: [-3.5, 2] },
+      color: "#bbaa88",
+      emissive: "#ddccaa",
     },
     {
       geometry: <icosahedronGeometry args={[1, 0]} />,
@@ -89,6 +97,8 @@ export default function FloatingMesh() {
       scale: 0.5,
       velocity: [-0.35, 0.25, -0.2],
       bounds: { x: [-3.5, 3.5], y: [-2.4, 1.6], z: [-3.5, 2] },
+      color: "#aa8899",
+      emissive: "#ddaabb",
     },
     {
       geometry: <octahedronGeometry args={[1, 0]} />,
@@ -96,6 +106,8 @@ export default function FloatingMesh() {
       scale: 0.6,
       velocity: [-0.2, -0.3, 0.1],
       bounds: { x: [-3.5, 3.5], y: [-2.4, 1.6], z: [-3.5, 2] },
+      color: "#8899bb",
+      emissive: "#aabbdd",
     },
   ]
 
@@ -107,3 +119,4 @@ export default function FloatingMesh() {
     </group>
   )
 }
+

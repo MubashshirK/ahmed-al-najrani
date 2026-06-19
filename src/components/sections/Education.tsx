@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { CLIENT, CERTIFICATIONS } from "@/lib/constants"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
-import { Award, GraduationCap, ChevronRight } from "lucide-react"
+import { Award, GraduationCap } from "lucide-react"
 
 const issuerLogos: Record<string, string> = {
   "KAUST": "/assets/kaust-profile-avatar.webp",
@@ -30,7 +30,7 @@ export default function Education() {
           viewport={{ once: true }}
           className={sectionLabel}
         >
-          // education & certifications
+          {"// education & certifications"}
         </motion.p>
 
         <motion.div
@@ -138,7 +138,7 @@ export default function Education() {
           viewport={{ once: true }}
           className="grid gap-3 sm:grid-cols-2"
         >
-          {CERTIFICATIONS.map((cert, i) => {
+          {CERTIFICATIONS.map((cert) => {
             const logo = issuerLogos[cert.issuer]
 
             return (
@@ -167,10 +167,9 @@ export default function Education() {
                     <h4 className="font-heading text-base font-semibold text-text-primary leading-snug">
                       {cert.name}
                     </h4>
-                    <ChevronRight size={14} className="mt-0.5 shrink-0 text-text-muted/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-accent" />
                   </div>
                   <p className="mt-0.5 text-sm text-text-muted">{cert.issuer}</p>
-                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1">
                     <span className="text-sm text-text-muted">{cert.date}</span>
                     {cert.id && (
                       <span className="font-mono text-[11px] text-text-muted/70">
@@ -178,7 +177,8 @@ export default function Education() {
                       </span>
                     )}
                     {cert.expires && (
-                      <span className="rounded-full border border-border px-1.5 py-0.5 text-[11px] text-text-muted/70">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[11px] text-text-muted/70">
+                        <span className="h-1.5 w-1.5 rounded-full bg-tint-green" />
                         Expires {cert.expires}
                       </span>
                     )}

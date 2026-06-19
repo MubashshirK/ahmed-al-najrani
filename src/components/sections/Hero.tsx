@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import { ChevronDown, GraduationCap, FileText } from "lucide-react"
 import { CLIENT } from "@/lib/constants"
 
@@ -49,7 +50,7 @@ export default function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="font-heading text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl"
+            className="font-heading text-5xl font-bold leading-tight tracking-tight text-center lg:text-left sm:text-6xl lg:text-7xl"
           >
             {CLIENT.name.split(" ")[0]}
             <br />
@@ -58,14 +59,14 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="text-xl font-medium text-text-muted sm:text-2xl"
+            className="text-xl font-medium text-text-muted text-center lg:text-left sm:text-2xl"
           >
             {CLIENT.title}
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="max-w-xl text-base text-text-muted/80"
+            className="max-w-xl text-base text-text-muted/80 text-center lg:text-left"
           >
             {CLIENT.subtitle}
           </motion.p>
@@ -98,10 +99,12 @@ export default function Hero() {
               <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
             </a>
             <a
-              href="#contact"
+              href="https://www.linkedin.com/in/ahmed-s-al-najrani-9bb72b296/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-medium text-text-primary transition-all duration-300 hover:bg-surface"
             >
-              Download CV
+              LinkedIn Profile
             </a>
           </motion.div>
         </motion.div>
@@ -118,10 +121,12 @@ export default function Hero() {
             <div className="absolute -inset-1.5 rounded-[1.15rem] border border-border/30" />
             <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-xl">
               <div className="absolute bottom-0 left-0 right-0 z-10 h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-              <img
+              <Image
                 src="/images/ahmed.jpg"
                 alt={CLIENT.name}
-                className="h-full w-full object-cover"
+                fill
+                priority
+                className="object-cover"
               />
             </div>
           </div>

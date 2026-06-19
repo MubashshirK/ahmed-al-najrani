@@ -45,7 +45,7 @@ export default function AnimatedCounter({ value, suffix = "", label, delay = 0 }
       transition={{ delay, duration: 0.5 }}
       className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-      <span className="bg-gradient-to-r from-accent to-accent/60 bg-clip-text font-heading text-5xl font-bold text-transparent">
+      <span className="bg-gradient-to-r from-tint-amber to-tint-blue bg-clip-text font-heading text-5xl font-bold text-transparent">
         {count}
         {suffix}
       </span>

@@ -19,15 +19,20 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark")
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("theme") as Theme | null
+      return stored || "dark"
+    }
+    return "dark"
+  })
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null
-    if (stored) {
-      setTheme(stored)
-    }
-    setMounted(true)
+    const handle = requestAnimationFrame(() => {
+      setMounted(true)
+    })
+    return () => cancelAnimationFrame(handle)
   }, [])
 
   useEffect(() => {

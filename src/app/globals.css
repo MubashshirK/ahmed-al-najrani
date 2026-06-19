@@ -11,6 +11,10 @@
   --color-accent: var(--accent);
   --color-accent-subtle: var(--accent-subtle);
   --color-warm: var(--warm);
+  --color-tint-blue: var(--tint-blue);
+  --color-tint-green: var(--tint-green);
+  --color-tint-amber: var(--tint-amber);
+  --color-tint-rose: var(--tint-rose);
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-heading: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
@@ -28,6 +32,10 @@
   --accent: #171717;
   --accent-subtle: #e8e8e8;
   --warm: #d4b8a0;
+  --tint-blue: #7089A8;
+  --tint-green: #63997F;
+  --tint-amber: #B38A66;
+  --tint-rose: #A07078;
 }
 
 [data-theme="dark"] {
@@ -41,6 +49,10 @@
   --accent: #f5f5f5;
   --accent-subtle: #2a2a2a;
   --warm: #7a6858;
+  --tint-blue: #7A94B8;
+  --tint-green: #69A88A;
+  --tint-amber: #C4966E;
+  --tint-rose: #AB7A82;
 }
 
 * {
@@ -59,4 +71,39 @@ body {
 ::selection {
   background: var(--accent-subtle);
   color: var(--text-primary);
+}
+
+/* Expertise domain row — color driven by --dc custom property */
+.domain-icon-bg {
+  background-color: color-mix(in srgb, var(--dc) 12%, transparent);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.domain-row:hover .domain-icon-bg {
+  background-color: color-mix(in srgb, var(--dc) 22%, transparent);
+}
+
+.domain-icon {
+  color: var(--dc);
+  transition: color 0.5s;
+}
+
+.domain-title {
+  transition: color 0.5s;
+}
+
+.domain-row:hover .domain-title {
+  color: var(--dc);
+}
+
+.domain-num {
+  transition: color 0.5s;
+}
+
+.domain-row:hover .domain-num {
+  color: color-mix(in srgb, var(--dc) 60%, transparent);
+}
+
+.domain-underline {
+  background-color: color-mix(in srgb, var(--dc) 35%, transparent);
 }

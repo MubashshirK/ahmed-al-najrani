@@ -8,6 +8,12 @@ import SkillCard from "@/components/ui/SkillCard"
 
 const icons = [BarChart3, HeartPulse, Users]
 
+const domainColors = [
+  "var(--tint-blue)",
+  "var(--tint-green)",
+  "var(--tint-amber)",
+]
+
 export default function Expertise() {
   return (
     <section id="expertise" className="relative py-24">
@@ -22,7 +28,7 @@ export default function Expertise() {
           viewport={{ once: true }}
           className={sectionLabel}
         >
-          // expertise
+          {"// expertise"}
         </motion.p>
 
         <motion.div
@@ -34,27 +40,33 @@ export default function Expertise() {
         >
           {SKILL_DOMAINS.map((domain, i) => {
             const Icon = icons[i]
+            const color = domainColors[i]
             return (
-              <motion.div key={domain.title} variants={fadeInUp} className="group/row">
+              <motion.div
+                key={domain.title}
+                variants={fadeInUp}
+                className="domain-row group/row"
+                style={{ "--dc": color } as React.CSSProperties}
+              >
                 <div className="grid gap-8 md:grid-cols-5">
                   <div className="md:col-span-2">
                     <div className="flex items-center gap-4 md:block">
                       <motion.div
                         whileHover={{ scale: 1.08 }}
-                        className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-subtle transition-colors duration-500 group-hover/row:bg-accent/15 md:mb-4"
+                        className="domain-icon-bg flex h-12 w-12 items-center justify-center rounded-xl md:mb-4"
                       >
-                        <Icon size={20} className="text-accent transition-colors duration-500 group-hover/row:text-accent" />
+                        <Icon size={20} className="domain-icon" />
                       </motion.div>
                       <div>
-                        <p className="font-mono text-[11px] font-medium tracking-widest text-text-muted/40 transition-colors duration-500 group-hover/row:text-accent/50">
+                        <p className="domain-num font-mono text-[11px] font-medium tracking-widest text-text-muted/40">
                           {String(i + 1).padStart(2, "0")}
                         </p>
-                        <h3 className="mt-1 font-heading text-2xl font-bold text-text-primary transition-colors duration-500 group-hover/row:text-accent md:text-3xl">
+                        <h3 className="domain-title mt-1 font-heading text-2xl font-bold text-text-primary md:text-3xl">
                           {domain.title}
                         </h3>
                       </div>
                     </div>
-                    <div className="mt-6 hidden h-px w-16 bg-accent/30 transition-all delay-75 duration-500 group-hover/row:w-full md:block" />
+                    <div className="domain-underline mt-6 hidden h-px w-16 transition-all delay-75 duration-500 group-hover/row:w-full md:block" />
                   </div>
 
                   <div className="md:col-span-3">
@@ -77,3 +89,4 @@ export default function Expertise() {
     </section>
   )
 }
+

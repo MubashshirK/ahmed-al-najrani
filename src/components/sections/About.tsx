@@ -14,9 +14,9 @@ const skillRadar = [
 ]
 
 function RadarChart() {
-  const cx = 100
+  const cx = 160
   const cy = 100
-  const r = 60
+  const r = 72
   const levels = 5
   const angleStep = (Math.PI * 2) / skillRadar.length
 
@@ -39,16 +39,38 @@ function RadarChart() {
 
   const labels = skillRadar.map((skill, i) => {
     const angle = angleStep * i - Math.PI / 2
-    const lx = cx + (r + 22) * Math.cos(angle)
-    const ly = cy + (r + 22) * Math.sin(angle)
+    const cos = Math.cos(angle)
+    const sin = Math.sin(angle)
+    
+    // Determine text-anchor dynamically to prevent horizontal text overflow
+    let textAnchor: "start" | "end" | "middle" = "middle"
+    if (cos > 0.1) {
+      textAnchor = "start"
+    } else if (cos < -0.1) {
+      textAnchor = "end"
+    }
+
+    // Determine baseline alignment dynamically to prevent vertical text overflow
+    let dominantBaseline: "auto" | "hanging" | "middle" = "middle"
+    if (sin < -0.9) {
+      dominantBaseline = "auto" // Top label
+    } else if (sin > 0.9) {
+      dominantBaseline = "hanging" // Bottom label
+    }
+
+    // Label distance from chart border
+    const labelDistance = r + 13
+    const lx = cx + labelDistance * cos
+    const ly = cy + labelDistance * sin
+
     return (
       <text
         key={skill.domain}
         x={lx}
         y={ly}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        className="fill-text-muted text-[9px] font-medium"
+        textAnchor={textAnchor}
+        dominantBaseline={dominantBaseline}
+        className="fill-text-muted text-[10px] font-medium transition-colors duration-300"
       >
         {skill.domain}
       </text>
@@ -63,10 +85,16 @@ function RadarChart() {
   })
 
   return (
-    <svg viewBox="0 0 200 200" className="h-full w-full">
+    <svg viewBox="0 0 320 200" className="h-full w-full">
+      <defs>
+        <linearGradient id="radarFill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="var(--tint-blue)" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="var(--tint-green)" stopOpacity="0.15" />
+        </linearGradient>
+      </defs>
       {axisLines}
       {gridLines}
-      <polygon points={dataPoints.join(" ")} fill="var(--accent-subtle)" stroke="var(--accent)" strokeWidth="1.5" />
+      <polygon points={dataPoints.join(" ")} fill="url(#radarFill)" stroke="var(--tint-blue)" strokeWidth="1.5" strokeOpacity="0.5" />
       {labels}
     </svg>
   )
@@ -86,7 +114,7 @@ export default function About() {
           viewport={{ once: true }}
           className={sectionLabel}
         >
-          // about_me
+          {"// about_me"}
         </motion.p>
 
         <div className="grid gap-12 lg:grid-cols-5">
@@ -129,7 +157,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center lg:col-span-2"
           >
-            <div className="h-64 w-64">
+            <div className="w-full max-w-[320px] aspect-[1.6] flex items-center justify-center">
               <RadarChart />
             </div>
           </motion.div>

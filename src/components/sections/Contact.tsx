@@ -1,33 +1,30 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Globe, MessageSquare } from "lucide-react"
+import { Mail, MapPin, Globe } from "lucide-react"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
 
 const contactMethods = [
   {
     icon: Mail,
     label: "Email",
-    value: "ahmed.alnajrani@example.com",
-    href: "mailto:ahmed.alnajrani@example.com",
+    value: "ahmed.411@outlook.sa",
+    href: "mailto:ahmed.411@outlook.sa",
+    color: "var(--tint-blue)",
   },
   {
     icon: MapPin,
     label: "Location",
     value: "King Faisal University, Al-Ahsa, Saudi Arabia",
     href: null,
+    color: "var(--tint-green)",
   },
   {
     icon: Globe,
     label: "LinkedIn",
-    value: "linkedin.com/in/ahmed-alnajrani",
-    href: "#",
-  },
-  {
-    icon: MessageSquare,
-    label: "ResearchGate",
-    value: "ResearchGate Profile",
-    href: "#",
+    value: "Ahmed S. Al-Najrani",
+    href: "https://www.linkedin.com/in/ahmed-s-al-najrani-9bb72b296/",
+    color: "var(--tint-blue)",
   },
 ]
 
@@ -50,7 +47,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className={sectionLabel}
         >
-          // contact
+          {"// contact"}
         </motion.p>
 
         <motion.div
@@ -78,8 +75,11 @@ export default function Contact() {
               const Icon = method.icon
               const content = (
                 <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-subtle">
-                    <Icon size={18} className="text-accent" />
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: `color-mix(in srgb, ${method.color} 12%, transparent)` }}
+                  >
+                    <Icon size={18} style={{ color: method.color }} />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-medium uppercase tracking-wide text-text-muted">

@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { LazyMotion, domAnimation } from "framer-motion"
 import Navbar from "@/components/ui/Navbar"
+import ScrollToTop from "@/components/ui/ScrollToTop"
 import ThemeProvider from "@/components/ui/ThemeProvider"
 import "./globals.css"
 
@@ -50,12 +52,20 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/images/ahmed.jpg" sizes="any" />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}else{document.documentElement.setAttribute('data-theme','dark')}}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
+          }}
+        />
       </head>
       <body className="min-h-full bg-bg text-text-primary antialiased">
         <ThemeProvider>
           <LazyMotion features={domAnimation}>
             <Navbar />
             {children}
+            <ScrollToTop />
           </LazyMotion>
         </ThemeProvider>
       </body>
