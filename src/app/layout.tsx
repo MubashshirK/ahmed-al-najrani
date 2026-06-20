@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { LazyMotion, domAnimation } from "framer-motion"
@@ -39,6 +39,14 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  interactiveWidget: "resizes-visual",
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -60,10 +68,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-bg text-text-primary antialiased">
+      <body className="bg-bg text-text-primary antialiased">
         <ThemeProvider>
+          <Navbar />
           <LazyMotion features={domAnimation}>
-            <Navbar />
             {children}
             <ScrollToTop />
           </LazyMotion>

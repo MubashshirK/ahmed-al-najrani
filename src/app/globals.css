@@ -60,12 +60,16 @@
   scrollbar-color: var(--border) transparent;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-geist-sans), sans-serif;
-  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 ::selection {

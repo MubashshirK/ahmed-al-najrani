@@ -91,11 +91,12 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-4 pt-2 lg:justify-start"
           >
             <a
-              href="#expertise"
+              href="/assets/CV-Ahmed-AlNajrani.pdf"
+              download
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3 text-sm font-medium text-text-inverse transition-all duration-300"
             >
               <FileText size={16} />
-              View Research
+              Download CV
               <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
             </a>
             <a

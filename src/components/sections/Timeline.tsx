@@ -30,7 +30,7 @@ function TimelineNode({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
-      className={`relative pb-12 pl-8 md:pl-0 group ${
+      className={`relative pb-12 pl-14 md:pl-0 group ${
         isEven ? "md:pl-12" : "md:pr-12"
       }`}
     >
@@ -112,13 +112,13 @@ export default function Timeline() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className={sectionLabel}
+          className={`${sectionLabel} mb-10`}
         >
           {"// Experience"}
         </motion.p>
 
         <div ref={ref} className="relative">
-          <div className="absolute left-[7px] top-0 h-full w-px bg-border md:left-1/2 md:-translate-x-px">
+          <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2 md:-translate-x-px">
             <motion.div
               className="h-full w-full bg-gradient-to-b from-accent to-accent/40"
               style={{ height: lineHeight }}
