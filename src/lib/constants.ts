@@ -22,8 +22,8 @@ export const CERTIFICATIONS = [
   { name: "Linux Commands & Shell Scripting Essentials V2", issuer: "Coursera", date: "Nov 2025", id: null },
   { name: "Hands-on Introduction to Linux Commands and Shell Scripting", issuer: "IBM", date: "Nov 2025", id: "GJ5HMWJ7Q4WX" },
   { name: "Python Programming Essentials", issuer: "Rice University", date: "Nov 2025", id: "DJ9CZZECYAPT" },
-  { name: "Basic Infection Control Skills (BICSL)", issuer: "Ministry of Health — Saudi Arabia", date: "Oct 2025", expires: "Oct 2027", id: "C-B0000475720-1" },
-  { name: "Life Support Training (BLS)", issuer: "Saudi Heart Association", date: "Oct 2025", expires: "Oct 2027", id: null },
+  { name: "Basic Infection Control Skills (BICSL)", issuer: "Ministry of Health — Saudi Arabia", date: "Oct 2025", id: "C-B0000475720-1" },
+  { name: "Life Support Training (BLS)", issuer: "Saudi Heart Association", date: "Oct 2025", id: null },
   { name: "Community Engagement in Emergencies Preparedness and Response", issuer: "UNICEF", date: "Apr 2025", id: "6bXDgx1Qnn" },
   { name: "Education in Emergencies Global Course", issuer: "UNICEF", date: "Apr 2025", id: "HmJha53oG9" },
 ]

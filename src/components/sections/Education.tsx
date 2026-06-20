@@ -139,22 +139,24 @@ export default function Education() {
         >
           {CERTIFICATIONS.map((cert) => {
             const logo = issuerLogos[cert.issuer]
+            const noBg = cert.issuer === "Rice University" || cert.issuer === "Ministry of Health — Saudi Arabia"
+            const contain = cert.issuer === "Ministry of Health — Saudi Arabia"
 
             return (
               <motion.div key={cert.name} variants={fadeInUp} className="flex w-full">
                 <div className="group flex w-full flex-1 items-start gap-4 rounded-xl border border-border bg-surface p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                   {logo ? (
-                    <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-white/5 shadow-sm">
+                    <div className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-xl shadow-sm ${noBg ? "bg-transparent" : "bg-white/5"}`}>
                       <Image
                         src={logo}
                         alt={cert.issuer}
                         fill
-                        className="object-contain p-1"
+                        className={contain ? "object-contain" : "object-cover"}
                       />
                     </div>
                   ) : (
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-subtle">
-                      <Award size={16} className="text-accent" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-subtle">
+                      <Award size={18} className="text-accent" />
                     </div>
                   )}
 
@@ -172,12 +174,7 @@ export default function Education() {
                           ID: {cert.id}
                         </span>
                       )}
-                      {cert.expires && (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[11px] text-text-muted/70">
-                          <span className="h-1.5 w-1.5 rounded-full bg-tint-green" />
-                          Expires {cert.expires}
-                        </span>
-                      )}
+
                     </div>
                   </div>
                 </div>

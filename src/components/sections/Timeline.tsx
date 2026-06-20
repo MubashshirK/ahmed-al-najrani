@@ -1,6 +1,6 @@
  "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { HeartPulse, GraduationCap, Users } from "lucide-react"
 import { EXPERIENCES } from "@/lib/constants"
@@ -23,6 +23,7 @@ function TimelineNode({
 
   const Icon = nodeConfig.icon
   const color = nodeConfig.color
+  const [hovered, setHovered] = useState(false)
 
   return (
     <motion.div
@@ -33,6 +34,8 @@ function TimelineNode({
       className={`relative pb-12 pl-14 md:pl-0 group ${
         isEven ? "md:pl-12" : "md:pr-12"
       }`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div
         className={`absolute top-2.5 md:top-8 z-10 ${
@@ -42,21 +45,21 @@ function TimelineNode({
         }`}
       >
         <div
-          className="relative flex h-9 w-9 items-center justify-center rounded-full border-2 bg-bg transition-all duration-500 group-hover:scale-115 overflow-hidden group-hover:[--node-icon-color:#fff]"
+          className="relative flex h-9 w-9 items-center justify-center rounded-full border-2 bg-bg transition-all duration-500 overflow-hidden"
           style={{
             borderColor: color,
             boxShadow: `0 0 10px ${color}`,
-            "--node-icon-color": color,
+            transform: hovered ? "scale(1.15)" : "scale(1)",
           } as React.CSSProperties}
         >
           <div
-            className="absolute inset-0 rounded-full transition-opacity duration-500 opacity-0 group-hover:opacity-100"
-            style={{ backgroundColor: color }}
+            className="absolute inset-0 rounded-full transition-opacity duration-500"
+            style={{ backgroundColor: color, opacity: hovered ? 1 : 0 }}
           />
           <Icon
             size={15}
             className="relative z-10 transition-colors duration-500"
-            style={{ color: "var(--node-icon-color)" }}
+            style={{ color: hovered ? "#fff" : color }}
           />
         </div>
       </div>
