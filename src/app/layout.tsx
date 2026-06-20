@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 import { LazyMotion, domAnimation } from "framer-motion"
 import Navbar from "@/components/ui/Navbar"
 import ScrollToTop from "@/components/ui/ScrollToTop"
