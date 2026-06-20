@@ -125,10 +125,10 @@ export default function Footer() {
           </div>
 
           {/* Credits and Copyright */}
-          <div className="flex items-center gap-4 text-[10px] text-text-muted/40">
-            <span>&copy; {new Date().getFullYear()} {CLIENT.name.split(" ")[0]}</span>
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 text-[10px] text-text-muted/40">
+            <span className="justify-self-end">&copy; {new Date().getFullYear()} {CLIENT.name.split(" ")[0]}</span>
             <span className="h-3 w-px bg-border" />
-            <span>Built with Next.js & Three.js</span>
+            <a href="https://mubashshir.vercel.app" target="_blank" rel="noopener noreferrer" className="justify-self-start hover:text-text-primary transition-colors duration-300">Design & Built by Mubashshir Khan</a>
           </div>
         </div>
       </div>
