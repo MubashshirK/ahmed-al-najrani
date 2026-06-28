@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { LazyMotion, domAnimation } from "framer-motion"
 import Navbar from "@/components/ui/Navbar"
 import ScrollToTop from "@/components/ui/ScrollToTop"
@@ -73,6 +74,7 @@ export default function RootLayout({
       </head>
       <body className="bg-bg text-text-primary antialiased">
         <Analytics />
+        <SpeedInsights />
         <ThemeProvider>
           <Navbar />
           <LazyMotion features={domAnimation}>
