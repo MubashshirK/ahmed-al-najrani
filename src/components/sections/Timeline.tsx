@@ -2,9 +2,11 @@
 
 import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { HeartPulse, GraduationCap, Users } from "lucide-react"
+import { Briefcase, Brain, GraduationCap, Users } from "lucide-react"
 import { EXPERIENCES } from "@/lib/constants"
 import { sectionLabel } from "@/lib/animations"
+import { Particles } from "@/components/three/Particles"
+import { useTheme } from "@/components/ui/ThemeProvider"
 
 function TimelineNode({
   experience,
@@ -16,9 +18,9 @@ function TimelineNode({
   const isEven = index % 2 === 0
 
   const nodeConfig = [
-    { icon: HeartPulse, color: "var(--tint-blue)" },
-    { icon: GraduationCap, color: "var(--tint-green)" },
-    { icon: Users, color: "var(--tint-amber)" },
+    { icon: Briefcase, color: "var(--tint-blue)" },
+    { icon: Brain, color: "var(--tint-green)" },
+    { icon: GraduationCap, color: "var(--tint-amber)" },
   ][index % 3]
 
   const Icon = nodeConfig.icon
@@ -98,6 +100,7 @@ function TimelineNode({
 
 export default function Timeline() {
   const ref = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"],
@@ -106,6 +109,14 @@ export default function Timeline() {
 
   return (
     <section id="experience" className="relative py-24">
+      <Particles
+        className="absolute inset-0 h-full w-full"
+        quantity={150}
+        color={theme === "dark" ? "#ffffff" : "#8B6914"}
+        staticity={30}
+        ease={80}
+        size={0.6}
+      />
       <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none"
         style={{ background: "radial-gradient(ellipse at center, var(--warm) 0%, transparent 70%)" }}

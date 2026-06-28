@@ -2,18 +2,67 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { CLIENT, CERTIFICATIONS } from "@/lib/constants"
+import { CERTIFICATIONS } from "@/lib/constants"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
 import { Award, GraduationCap } from "lucide-react"
 
+const degrees = [
+  {
+    university: "Singhania University, India",
+    degree: "PhD — Enterprise Resource Planning (ERP)",
+    period: "2008 — 2012",
+    status: "Completed",
+    focus: ["Enterprise Resource Planning", "Technology Integration", "Organizational Transformation"],
+    logo: "/assets/Singhania-University-logo.png",
+  },
+  {
+    university: "Atlantic International University, USA",
+    degree: "Second PhD — Geographic Information Systems (GIS)",
+    period: "2014 — 2018",
+    status: "Completed",
+    focus: ["Geographic Information Systems", "Spatial Intelligence", "Decision Support Systems"],
+    logo: "/assets/Atlantic-International-University-logo.avif",
+  },
+  {
+    university: "University of Mumbai",
+    degree: "MBA",
+    period: "1995 — 1997",
+    status: "Completed",
+    focus: ["Business Administration", "Strategic Planning", "Management"],
+    logo: "/assets/university-of-mumbai.jpg",
+  },
+  {
+    university: "University of Mumbai",
+    degree: "MSc Applied Mathematics — University Rank Holder",
+    period: "1990 — 1993",
+    status: "Completed",
+    focus: ["Applied Mathematics", "Statistical Modelling", "Quantitative Analysis"],
+    logo: "/assets/university-of-mumbai.jpg",
+  },
+  {
+    university: "University of Mumbai",
+    degree: "Diploma in Computer Software & Techniques",
+    period: "1988 — 1990",
+    status: "Completed",
+    focus: ["Computer Science", "Software Development", "Programming"],
+    logo: "/assets/university-of-mumbai.jpg",
+  },
+  {
+    university: "Islamic Development Bank, Saudi Arabia",
+    degree: "Postdoctoral Research — Innovation & Infrastructure Development",
+    period: "2012 — 2014",
+    status: "Completed",
+    focus: ["Innovation", "Infrastructure Development", "Research"],
+    logo: "/assets/islamic-development-bank.png",
+  },
+]
+
 const issuerLogos: Record<string, string> = {
-  "KAUST": "/assets/kaust-profile-avatar.webp",
-  "Coursera": "/assets/Coursera-Logo_600x600.svg.png",
-  "IBM": "/assets/IBM-logo.png",
-  "Rice University": "/assets/Rice-University.png",
-  "Ministry of Health — Saudi Arabia": "/assets/Saudi_Ministry_of_Health_Logo.svg",
-  "Saudi Heart Association": "/assets/Saudi-Heart-Association.png",
-  "UNICEF": "/assets/UNICEF.png",
+  "be10x": "/assets/be10x-certificate.jpg",
+  "ECGS Education": "/assets/ECGS-Education-logo.png",
+  "Exponential World AI": "/assets/Exponential-World-AI-logo.jpg",
+  "SBUB Group": "/assets/sbub-group-logo.webp",
+  "King Abdulaziz University": "/assets/King-AbdulAziz-University-logo.jpg",
 }
 
 export default function Education() {
@@ -38,83 +87,85 @@ export default function Education() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-20 space-y-4"
         >
-          <motion.div variants={fadeInUp} className="w-full">
-            <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-              <div className="h-1 bg-gradient-to-r from-accent/10 via-accent/30 to-accent/10" />
+          {degrees.map((edu) => (
+            <motion.div key={edu.degree} variants={fadeInUp} className="w-full">
+              <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="h-1 bg-gradient-to-r from-[#A08035]/10 via-[#A08035]/30 to-[#A08035]/10" />
 
-              <div className="p-6 sm:p-8">
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-6">
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white/5 shadow-sm sm:h-16 sm:w-16">
-                    <Image
-                      src="/assets/King_Faisal_University.png"
-                      alt="King Faisal University"
-                      fill
-                      className="object-contain p-1.5"
-                    />
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div>
-                        <h3 className="font-heading text-xl font-bold text-text-primary sm:text-2xl">
-                          {CLIENT.university}
-                        </h3>
-                        <p className="mt-1 text-sm text-text-primary/70 sm:text-base">
-                          {CLIENT.degree}
-                        </p>
+                <div className="p-6 sm:p-8">
+                  <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-6">
+                    {edu.logo ? (
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm sm:h-16 sm:w-16">
+                        <Image
+                          src={edu.logo}
+                          alt={edu.university}
+                          fill
+                          className="object-contain p-2"
+                        />
                       </div>
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-[11px] font-medium text-accent">
-                        <GraduationCap size={12} />
-                        Class of {CLIENT.graduationYear}
-                      </span>
-                    </div>
-
-                    <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
-                      <div>
-                        <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
-                          Duration
-                        </p>
-                        <p className="mt-0.5 text-sm text-text-primary">Aug 2021 — Jan 2026</p>
+                    ) : (
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent/10 shadow-sm sm:h-16 sm:w-16">
+                        <GraduationCap size={24} className="text-accent" />
                       </div>
-                      <div>
-                        <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
-                          Status
-                        </p>
-                        <span className="mt-0.5 inline-flex items-center gap-1.5 text-sm text-text-primary">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                          Complete
+                    )}
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <h3 className="font-heading text-xl font-bold text-text-primary sm:text-2xl">
+                            {edu.university}
+                          </h3>
+                          <p className="mt-1 text-sm text-text-primary/70 sm:text-base">
+                            {edu.degree}
+                          </p>
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-[11px] font-medium text-accent">
+                          <GraduationCap size={12} />
+                          {edu.period}
                         </span>
                       </div>
-                      <div>
-                        <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
-                          Semesters
-                        </p>
-                        <p className="mt-0.5 text-sm text-text-primary">8 Completed</p>
+
+                      <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
+                        <div>
+                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                            Duration
+                          </p>
+                          <p className="mt-0.5 text-sm text-text-primary">{edu.period}</p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                            Status
+                          </p>
+                          <span className="mt-0.5 inline-flex items-center gap-1.5 text-sm text-text-primary">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                            {edu.status}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-6 border-t border-border/50 pt-6">
-                  <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
-                    Focus Areas
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {["Public Health", "Biostatistics", "Research Methods", "Epidemiology"].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-lg border border-border bg-bg px-2.5 py-1 text-[11px] text-text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="mt-6 border-t border-border/50 pt-6">
+                    <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                      Focus Areas
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {edu.focus.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-lg border border-border bg-bg px-2.5 py-1 text-[11px] text-text-muted"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </motion.div>
 
         <motion.div
@@ -139,23 +190,21 @@ export default function Education() {
         >
           {CERTIFICATIONS.map((cert) => {
             const logo = issuerLogos[cert.issuer]
-            const noBg = cert.issuer === "Rice University" || cert.issuer === "Ministry of Health — Saudi Arabia"
-            const contain = cert.issuer === "Ministry of Health — Saudi Arabia"
 
             return (
               <motion.div key={cert.name} variants={fadeInUp} className="flex w-full">
                 <div className="group flex w-full flex-1 items-start gap-4 rounded-xl border border-border bg-surface p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                   {logo ? (
-                    <div className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-xl shadow-sm ${noBg ? "bg-transparent" : "bg-white/5"}`}>
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-white/5 shadow-sm">
                       <Image
                         src={logo}
                         alt={cert.issuer}
                         fill
-                        className={contain ? "object-contain" : "object-cover"}
+                        className="object-cover"
                       />
                     </div>
                   ) : (
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-subtle">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10">
                       <Award size={18} className="text-accent" />
                     </div>
                   )}
@@ -174,7 +223,6 @@ export default function Education() {
                           ID: {cert.id}
                         </span>
                       )}
-
                     </div>
                   </div>
                 </div>

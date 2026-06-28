@@ -73,7 +73,7 @@ export default function Navbar() {
             }}
           >
             <button onClick={() => scrollTo("#hero")} className={`font-heading font-bold tracking-tight text-text-primary transition-all duration-300 ${scrolled ? "px-2 text-sm" : "px-0 text-lg"}`}>
-              A<span className="text-text-muted">.</span>S<span className="text-text-muted">.</span>N
+              M<span className="text-text-muted">.</span>K<span className="text-text-muted">.</span>A
             </button>
 
             <div className="flex items-center gap-1.5">
@@ -120,7 +120,7 @@ export default function Navbar() {
               className={`font-heading font-bold tracking-tight text-text-primary transition-all duration-300 ${scrolled ? "px-2 text-sm" : "px-0 text-lg"
                 }`}
             >
-              A<span className="text-text-muted">.</span>S<span className="text-text-muted">.</span>N
+              M<span className="text-text-muted">.</span>K<span className="text-text-muted">.</span>A
             </button>
 
             <div className="flex items-center">
