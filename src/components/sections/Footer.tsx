@@ -87,16 +87,16 @@ export default function Footer() {
       <Particles
         className="absolute inset-0 h-full w-full"
         quantity={80}
-        color={theme === "dark" ? "#ffffff" : "#8B6914"}
+        color={theme === "dark" ? "#ffffff" : "#a08030"}
         staticity={30}
         ease={80}
         size={0.5}
       />
       {/* Subtle bottom-centered radial gradient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,var(--warm)_0%,transparent_70%)] opacity-[0.06] pointer-events-none" />
-      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#A08035]/20 to-transparent" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c8a040]/20 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32">
         {/* Interactive flashlight text container with delayed scroll-in viewport animation */}
         <motion.div
           ref={ref}
@@ -109,7 +109,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="relative cursor-default select-none text-center font-heading text-[clamp(2.5rem,8vw,8rem)] font-black leading-none tracking-tighter py-4"
+          className="relative cursor-default select-none text-center font-heading text-[clamp(2rem,6vw,6rem)] font-black leading-none tracking-tighter py-4 max-w-4xl mx-auto"
         >
           {/* Muted background text */}
           <p className="text-warm/15 dark:text-warm/10" aria-hidden="true">
@@ -119,10 +119,10 @@ export default function Footer() {
           <p
             className="absolute inset-0 py-4"
             style={{
-              maskImage: `radial-gradient(${isTouchDevice ? 280 : 180}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(${isTouchDevice ? 280 : 180}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
-              color: "#C9A84C",
-              textShadow: "0 1px 0 #8B6914, 0 2px 0 #7A5D1A, 0 3px 0 #6B5A1E, 0 4px 6px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.3)",
+              maskImage: `radial-gradient(${isTouchDevice ? 240 : 160}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              WebkitMaskImage: `radial-gradient(${isTouchDevice ? 240 : 160}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              color: "#e8c860",
+              textShadow: "0 1px 0 #a08030, 0 2px 0 #908030, 0 3px 0 #8a7020, 0 4px 6px rgba(0,0,0,0.4), 0 0 20px rgba(232,200,96,0.3)",
             }}
           >
             {text}
@@ -139,7 +139,7 @@ export default function Footer() {
                 className="group relative text-xs text-text-muted/60 transition-colors duration-300 hover:text-text-primary"
               >
                 {label}
-                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#A08035] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#c8a040] transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>

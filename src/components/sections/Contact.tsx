@@ -44,7 +44,7 @@ export default function Contact() {
       <Particles
         className="absolute inset-0 h-full w-full"
         quantity={100}
-        color={theme === "dark" ? "#ffffff" : "#8B6914"}
+        color={theme === "dark" ? "#ffffff" : "#a08030"}
         staticity={30}
         ease={80}
         size={0.6}

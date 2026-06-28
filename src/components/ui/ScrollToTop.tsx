@@ -57,7 +57,7 @@ export default function ScrollToTop() {
               r="22"
               className="fill-none"
               strokeWidth="2"
-              stroke="#A08035"
+              stroke="#c8a040"
               strokeDasharray="138.23"
               strokeLinecap="round"
               style={{ strokeDashoffset }}

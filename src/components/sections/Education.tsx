@@ -92,7 +92,7 @@ export default function Education() {
           {degrees.map((edu) => (
             <motion.div key={edu.degree} variants={fadeInUp} className="w-full">
               <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="h-1 bg-gradient-to-r from-[#A08035]/10 via-[#A08035]/30 to-[#A08035]/10" />
+                <div className="h-1 bg-gradient-to-r from-[#c8a040]/10 via-[#c8a040]/30 to-[#c8a040]/10" />
 
                 <div className="p-6 sm:p-8">
                   <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-6">

@@ -48,10 +48,10 @@ export default function AnimatedCounter({ value, suffix = "", label, delay = 0 }
       <span
         className="font-heading text-5xl font-bold"
         style={{
-          background: "linear-gradient(315deg, #6B5A1E 0%, #A08035 30%, #C9A84C 50%, #A08035 70%, #6B5A1E 100%)",
+          background: "linear-gradient(315deg, #8a7020 0%, #c8a040 30%, #e8c860 50%, #c8a040 70%, #8a7020 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          filter: "drop-shadow(0 2px 4px rgba(139,105,20,0.5))",
+          filter: "drop-shadow(0 2px 4px rgba(160,128,48,0.5))",
         }}
       >
         {count}

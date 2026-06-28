@@ -27,9 +27,9 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/70 to-bg" />
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full"
+        className="absolute inset-0 m-auto h-[700px] w-[700px] rounded-full"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(212,184,160,0.12) 0%, rgba(212,184,160,0.04) 50%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, rgba(200,168,78,0.12) 0%, rgba(200,168,78,0.04) 50%, transparent 70%)",
         }}
       />
 
@@ -59,7 +59,7 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="text-xl font-medium text-text-muted text-center lg:text-left sm:text-2xl"
+            className="text-xl font-medium text-text-muted text-center lg:text-left sm:text-xl"
           >
             {CLIENT.title}
           </motion.p>
@@ -75,7 +75,7 @@ export default function Hero() {
             variants={fadeUp}
             className="flex flex-wrap justify-center gap-3 lg:justify-start"
           >
-            {["35+ Years Experience", "Generative AI Strategist", "Enterprise AI Architect"].map((item) => (
+            {["International Speaker", "Researcher", "AI Strategist", "CEO"].map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-muted"
