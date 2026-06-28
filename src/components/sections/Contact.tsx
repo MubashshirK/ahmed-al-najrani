@@ -1,36 +1,54 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Globe } from "lucide-react"
+import { Mail, MapPin, Globe, Phone } from "lucide-react"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
+import { Particles } from "@/components/three/Particles"
+import { useTheme } from "@/components/ui/ThemeProvider"
 
 const contactMethods = [
   {
     icon: Mail,
     label: "Email",
-    value: "ahmed.411@outlook.sa",
-    href: "mailto:ahmed.411@outlook.sa",
+    value: "moka2205@gmail.com",
+    href: "mailto:moka2205@gmail.com",
     color: "var(--tint-blue)",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 9019531196",
+    href: "tel:+919019531196",
+    color: "var(--tint-green)",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "King Faisal University, Al-Ahsa, Saudi Arabia",
+    value: "Kharghar, Navi Mumbai, India",
     href: null,
-    color: "var(--tint-green)",
+    color: "var(--tint-amber)",
   },
   {
     icon: Globe,
     label: "LinkedIn",
-    value: "Ahmed S. Al-Najrani",
-    href: "https://www.linkedin.com/in/ahmed-s-al-najrani-9bb72b296/",
+    value: "Dr. Mohammed Khursheed Akhtar",
+    href: "https://www.linkedin.com/in/dr-mohammed-khursheed-akhtar-bb5205254/",
     color: "var(--tint-blue)",
   },
 ]
 
 export default function Contact() {
+  const { theme } = useTheme()
   return (
     <section id="contact" className="relative py-24">
+      <Particles
+        className="absolute inset-0 h-full w-full"
+        quantity={100}
+        color={theme === "dark" ? "#ffffff" : "#8B6914"}
+        staticity={30}
+        ease={80}
+        size={0.6}
+      />
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
@@ -67,7 +85,7 @@ export default function Contact() {
             variants={fadeInUp}
             className="mt-3 max-w-lg text-base leading-relaxed text-text-muted"
           >
-            Available for research collaborations, data analysis projects, and public health consultations.
+            Available for AI transformation advisory, enterprise consulting, research collaborations, and executive workshops.
           </motion.p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2">

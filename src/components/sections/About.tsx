@@ -5,18 +5,18 @@ import { CLIENT } from "@/lib/constants"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
 
 const skillRadar = [
-  { domain: "Statistics", level: 90 },
-  { domain: "Research", level: 85 },
-  { domain: "Leadership", level: 80 },
-  { domain: "Programming", level: 70 },
-  { domain: "Public Health", level: 90 },
-  { domain: "Communication", level: 75 },
+  { domain: "AI Architecture", level: 95 },
+  { domain: "Data Analytics", level: 90 },
+  { domain: "Leadership", level: 92 },
+  { domain: "Generative AI", level: 95 },
+  { domain: "AI Strategy", level: 93 },
+  { domain: "Consulting", level: 88 },
 ]
 
 function RadarChart() {
-  const cx = 160
-  const cy = 100
-  const r = 72
+  const cx = 240
+  const cy = 150
+  const r = 108
   const levels = 5
   const angleStep = (Math.PI * 2) / skillRadar.length
 
@@ -85,7 +85,7 @@ function RadarChart() {
   })
 
   return (
-    <svg viewBox="0 0 320 200" className="h-full w-full">
+    <svg viewBox="0 0 480 300" className="h-full w-full">
       <defs>
         <linearGradient id="radarFill" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="var(--tint-blue)" stopOpacity="0.15" />
@@ -129,13 +129,11 @@ export default function About() {
               variants={fadeInUp}
               className="max-w-2xl text-base leading-relaxed text-text-muted sm:text-lg"
             >
-              With over two years of experience in the Student Health Council, I have undertaken various leadership roles, most recently serving as the{" "}
-              <span className="text-accent font-medium">Head of the Initiatives Committee</span>.
-              I am proficient in key statistical programs such as OpenEpi, PSPP, JASP, and JAMOVI,
-              enabling me to analyze data and effectively develop public health interventions. I have
-              also become a lecturer at the research school for{" "}
-              <span className="text-accent font-medium">four research groups</span>, assisting them
-              in publishing their studies.
+              With over 35 years of international experience, I have led enterprise technology modernization, AI strategy, platform architecture, analytics, ERP transformation, and digital innovation initiatives across Saudi Arabia, GCC, and India. I bring proven expertise in designing and operationalizing{" "}
+              <span className="text-accent font-medium">enterprise AI solutions</span>,
+              Generative AI platforms, AI agents, and LLM-powered applications. My work focuses on translating AI capabilities into{" "}
+              <span className="text-accent font-medium">operational efficiency, ROI, and strategic value</span>{" "}
+              for organizations. Skilled in AI Solution Engineering, AI Platform Architecture, Enterprise Integration, AI Governance, Machine Learning, Predictive Analytics, Cloud-enabled AI Ecosystems, Agentic AI Workflows, and Enterprise Modernization Programs.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mt-6 flex flex-wrap gap-3">
@@ -157,7 +155,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center lg:col-span-2"
           >
-            <div className="w-full max-w-[320px] aspect-[1.6] flex items-center justify-center">
+            <div className="w-full max-w-[480px] aspect-[1.6] flex items-center justify-center">
               <RadarChart />
             </div>
           </motion.div>

@@ -21,21 +21,23 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Ahmed S. Al-Najrani | Public Health Researcher & Biostatistician",
+  title: "Dr. Mohammed Khursheed Akhtar | Enterprise AI Solutions Architect",
   description:
-    "Personal portfolio of Ahmed S. Al-Najrani — Public Health Researcher & Biostatistician at King Faisal University. KAP Studies, Data Analysis, Health Intervention Design.",
+    "Personal portfolio of Dr. Mohammed Khursheed Akhtar — Enterprise AI Solutions Architect & AI Transformation Executive with 35+ years of experience in Generative AI, LLMs, Agentic AI, and Enterprise AI Strategy.",
   keywords: [
-    "Public Health",
-    "Biostatistics",
-    "KAP Studies",
-    "King Faisal University",
-    "Research",
-    "Data Analysis",
+    "Enterprise AI",
+    "AI Solutions Architect",
+    "Generative AI",
+    "LLMs",
+    "Agentic AI",
+    "AI Transformation",
+    "AI Strategy",
+    "Platform Architecture",
   ],
   openGraph: {
-    title: "Ahmed S. Al-Najrani | Public Health Researcher",
+    title: "Dr. Mohammed Khursheed Akhtar | Enterprise AI Solutions Architect",
     description:
-      "Public Health Researcher & Biostatistician at King Faisal University.",
+      "Enterprise AI Solutions Architect & AI Transformation Executive with 35+ years of international experience.",
     type: "website",
   },
 }
@@ -60,7 +62,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/images/ahmed.jpg" sizes="any" />
+        <link rel="icon" href="/images/dr-mohammed.png" sizes="any" />
         <Script
           id="theme-init"
           strategy="beforeInteractive"

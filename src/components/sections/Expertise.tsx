@@ -3,10 +3,10 @@
 import { motion } from "framer-motion"
 import { SKILL_DOMAINS } from "@/lib/constants"
 import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
-import { BarChart3, HeartPulse, Users } from "lucide-react"
+import { Brain, BarChart3, Users } from "lucide-react"
 import SkillCard from "@/components/ui/SkillCard"
 
-const icons = [BarChart3, HeartPulse, Users]
+const icons = [Brain, BarChart3, Users]
 
 const domainColors = [
   "var(--tint-blue)",

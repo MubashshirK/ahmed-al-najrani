@@ -1,74 +1,74 @@
 export const CLIENT = {
-  name: "Ahmed S. Al-Najrani",
-  title: "Public Health Researcher & Biostatistician",
-  subtitle: "KAP Studies · Data Analysis · Health Intervention Design",
-  university: "King Faisal University",
-  degree: "Bachelor of Applied Medical Sciences — Public Health",
-  graduationYear: "2026",
-  bio: `With over two years of experience in the Student Health Council, I have undertaken various leadership roles, most recently serving as the Head of the Initiatives Committee. I am proficient in key statistical programs such as OpenEpi, PSPP, JASP, and JAMOVI, enabling me to analyze data and effectively develop public health interventions. I have also become a lecturer at the research school for four research groups, assisting them in publishing their studies.`,
-  languages: ["Arabic (Native)", "English (Full Professional)"],
-  topSkills: ["Problem Solving", "Teamwork", "Critical Thinking", "Data Analysis", "KAP Model Analysis"],
+  name: "Dr. Mohammed Khursheed Akhtar",
+  title: "Enterprise AI Solutions Architect & Transformation Executive",
+  subtitle: "Generative AI · LLMs · Agentic AI · Enterprise AI Strategy · Platform Architecture",
+  university: "Singhania University",
+  degree: "PhD — Enterprise Resource Planning (ERP)",
+  graduationYear: "2012",
+  bio: `Senior Enterprise AI Solutions Architect and AI Transformation Executive with 35+ years of international experience leading enterprise technology modernization, AI strategy, platform architecture, analytics, ERP transformation, and digital innovation initiatives across Saudi Arabia, GCC, and India. Proven expertise in designing and operationalizing enterprise AI solutions, Generative AI platforms, AI agents, LLM-powered applications, intelligent automation systems, and decision intelligence frameworks that drive measurable business outcomes.`,
+  languages: ["English (Full Professional)", "Hindi (Native)", "Urdu (Native)"],
+  topSkills: ["Enterprise AI Strategy", "Generative AI Solutions", "AI Platform Architecture", "AI Transformation Programs", "Executive Advisory"],
 }
 
 export const STATS = [
-  { value: 2, suffix: "+", label: "Years in Leadership" },
-  { value: 25, suffix: "+", label: "Skills Acquired" },
-  { value: 4, suffix: "", label: "Research Groups Mentored" },
+  { value: 35, suffix: "+", label: "Years of Experience" },
+  { value: 5, suffix: "", label: "Academic Degrees" },
   { value: 8, suffix: "+", label: "Certifications" },
+  { value: 5, suffix: "+", label: "Awards & Honors" },
 ]
 
 export const CERTIFICATIONS = [
-  { name: "Fundamental Skills in Bioinformatics", issuer: "KAUST", date: "Dec 2025", id: "V46ZYA406ZND" },
-  { name: "Linux Commands & Shell Scripting Essentials V2", issuer: "Coursera", date: "Nov 2025", id: null },
-  { name: "Hands-on Introduction to Linux Commands and Shell Scripting", issuer: "IBM", date: "Nov 2025", id: "GJ5HMWJ7Q4WX" },
-  { name: "Python Programming Essentials", issuer: "Rice University", date: "Nov 2025", id: "DJ9CZZECYAPT" },
-  { name: "Basic Infection Control Skills (BICSL)", issuer: "Ministry of Health — Saudi Arabia", date: "Oct 2025", id: "C-B0000475720-1" },
-  { name: "Life Support Training (BLS)", issuer: "Saudi Heart Association", date: "Oct 2025", id: null },
-  { name: "Community Engagement in Emergencies Preparedness and Response", issuer: "UNICEF", date: "Apr 2025", id: "6bXDgx1Qnn" },
-  { name: "Education in Emergencies Global Course", issuer: "UNICEF", date: "Apr 2025", id: "HmJha53oG9" },
+  { name: "Generative AI Fundamentals", issuer: "be10x", date: "2024", id: null },
+  { name: "Machine Learning Fundamentals", issuer: "ECGS Education", date: "2024", id: null },
+  { name: "Python for Data Science", issuer: "Exponential World AI", date: "2024", id: null },
+  { name: "Prompt Engineering", issuer: "be10x", date: "2024", id: null },
+  { name: "AI Governance & Responsible AI", issuer: "ECGS Education", date: "2024", id: null },
+  { name: "Tableau & Power BI Analytics", issuer: "Exponential World AI", date: "2024", id: null },
+  { name: "Business Intelligence & Analytics", issuer: "SBUB Group", date: "2024", id: null },
+  { name: "Research Analytics", issuer: "King Abdulaziz University", date: "2023", id: null },
 ]
 
 export const SKILL_DOMAINS = [
   {
-    title: "Statistical Analysis",
-    skills: ["OpenEpi", "PSPP", "JASP", "JAMOVI", "KAP Model Analysis", "Bioinformatics", "Python"],
+    title: "Enterprise AI & Transformation",
+    skills: ["Enterprise AI Strategy", "AI Transformation Programs", "Generative AI Solutions", "Large Language Models (LLMs)", "AI Agents & Agentic Workflows", "AI Solution Architecture", "AI Governance & Responsible AI", "Enterprise Modernization"],
   },
   {
-    title: "Research & Public Health",
-    skills: ["Data Interpretation", "Factor Structure Evaluation", "Health Intervention Design", "Infection Control", "Emergency Preparedness"],
+    title: "Data & Analytics",
+    skills: ["Machine Learning", "Predictive Analytics", "Statistical Modelling", "Business Intelligence", "Decision Intelligence", "Data Visualization", "Data Governance", "KPI Framework Development"],
   },
   {
-    title: "Leadership & Communication",
-    skills: ["Initiative Management", "Academic Lecturing", "Team Coordination", "Critical Thinking", "Problem Solving"],
+    title: "Leadership & Consulting",
+    skills: ["Executive Advisory", "Stakeholder Management", "CXO Engagement", "Strategic Planning", "Cross-functional Leadership", "Innovation Management", "Change Management", "Workshop Facilitation"],
   },
 ]
 
 export const EXPERIENCES = [
   {
-    role: "Head, Initiatives Committee",
-    organization: "Student Health Council, King Faisal University",
-    period: "2021 — Present",
-    description: "Leading the development and execution of health initiatives across campus, coordinating with university stakeholders and managing a team of committee members.",
+    role: "Dean R&D & CEO",
+    organization: "AITekNix Center of Excellence | Mumbai, India",
+    period: "2025 — Present",
+    description: "Leading AI innovation, digital transformation, workforce development, and research advisory initiatives focused on Generative AI, Machine Learning, Analytics, and Enterprise AI adoption. Designed AI transformation roadmaps, developed AI-enabled decision-support models, and conducted executive workshops on Generative AI, Prompt Engineering, AI Governance, and responsible AI implementation.",
   },
   {
-    role: "Lecturer & Research Mentor",
-    organization: "Research School, King Faisal University",
-    period: "2023 — Present",
-    description: "Mentoring four research groups through the research process, from study design to publication, with a focus on public health methodologies.",
+    role: "Enterprise AI Advisor & Research Consultant",
+    organization: "Saudi Arabia & India",
+    period: "2018 — Present",
+    description: "Providing strategic advisory services in AI adoption, analytics, digital transformation, research intelligence, and technology-enabled organizational development. Guided institutions on AI strategy, data-driven decision-making, and digital transformation initiatives. Delivered AI transformation workshops focused on Generative AI, Machine Learning, and intelligent automation opportunities.",
   },
   {
-    role: "Co-Founder",
-    organization: "KFU Pioneers Forum (Economic Empowerment)",
-    period: "2024",
-    description: "Co-founded a forum dedicated to economic empowerment initiatives, fostering entrepreneurship and professional development among students.",
+    role: "Senior Strategic Advisor, Faculty Member & Research Mentor",
+    organization: "King Abdulaziz University | Jeddah, Saudi Arabia",
+    period: "1990 — 2023",
+    description: "Served as a strategic advisor, educator, researcher, and transformation advocate supporting academic excellence, digital innovation, and technology-enabled modernization initiatives. Led technology-enabled transformation initiatives, advised institutional leadership on data-driven decision-making, and designed programs in Artificial Intelligence, Machine Learning, Data Analytics, Computer Science, and Statistics.",
   },
 ]
 
 export const NAV_LINKS = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Expertise", href: "#expertise" },
-  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ]

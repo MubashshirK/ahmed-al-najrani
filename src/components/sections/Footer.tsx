@@ -3,11 +3,15 @@
 import { useState, useRef, useEffect, type MouseEvent, type TouchEvent } from "react"
 import { motion } from "framer-motion"
 import { NAV_LINKS, CLIENT } from "@/lib/constants"
+import { Particles } from "@/components/three/Particles"
+import { useTheme } from "@/components/ui/ThemeProvider"
 
 export default function Footer() {
   const [pos, setPos] = useState({ x: -9999, y: -9999 })
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [isInteracting, setIsInteracting] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href)
@@ -42,41 +46,55 @@ export default function Footer() {
     setIsInteracting(false)
   }
 
-  // Automatic sweeping glow animation on touch/mobile devices
+  // Detect touch device and set initial centered position
   useEffect(() => {
-    const isTouchDevice =
+    const isTouch =
       typeof window !== "undefined" &&
       ("ontouchstart" in window || navigator.maxTouchPoints > 0)
+    setIsTouchDevice(isTouch)
+    if (isTouch && ref.current) {
+      const rect = ref.current.getBoundingClientRect()
+      setPos({ x: rect.width / 2, y: rect.height / 2 })
+    }
+  }, [])
 
+  // Smooth auto-sweep using requestAnimationFrame on touch devices
+  useEffect(() => {
     if (!isTouchDevice) return
 
     let angle = 0
-    const interval = setInterval(() => {
-      // Pause automatic sweep if the user is currently touching/interacting
-      if (isInteracting) return
+    let rafId: number
 
-      const rect = ref.current?.getBoundingClientRect()
-      if (rect) {
-        const width = rect.width
-        const height = rect.height
-        // Calculate a gentle horizontal oscillation sweep
-        const sweepX = (Math.sin(angle) * 0.45 + 0.5) * width
-        const sweepY = height / 2
+    const sweep = () => {
+      if (isTouchDevice && !isInteracting && ref.current) {
+        const rect = ref.current.getBoundingClientRect()
+        const sweepX = (Math.sin(angle) * 0.4 + 0.5) * rect.width
+        const sweepY = rect.height / 2
         setPos({ x: sweepX, y: sweepY })
-        angle += 0.025
+        angle += 0.004
       }
-    }, 20)
+      rafId = requestAnimationFrame(sweep)
+    }
 
-    return () => clearInterval(interval)
-  }, [isInteracting])
+    rafId = requestAnimationFrame(sweep)
+    return () => cancelAnimationFrame(rafId)
+  }, [isTouchDevice, isInteracting])
 
   const text = CLIENT.name
 
   return (
     <footer className="relative overflow-hidden border-t border-border bg-bg">
+      <Particles
+        className="absolute inset-0 h-full w-full"
+        quantity={80}
+        color={theme === "dark" ? "#ffffff" : "#8B6914"}
+        staticity={30}
+        ease={80}
+        size={0.5}
+      />
       {/* Subtle bottom-centered radial gradient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,var(--warm)_0%,transparent_70%)] opacity-[0.06] pointer-events-none" />
-      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#A08035]/20 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-24">
         {/* Interactive flashlight text container with delayed scroll-in viewport animation */}
@@ -99,10 +117,12 @@ export default function Footer() {
           </p>
           {/* Highlighted text revealed by mask */}
           <p
-            className="absolute inset-0 py-4 text-text-primary"
+            className="absolute inset-0 py-4"
             style={{
-              maskImage: `radial-gradient(180px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(180px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              maskImage: `radial-gradient(${isTouchDevice ? 280 : 180}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              WebkitMaskImage: `radial-gradient(${isTouchDevice ? 280 : 180}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              color: "#C9A84C",
+              textShadow: "0 1px 0 #8B6914, 0 2px 0 #7A5D1A, 0 3px 0 #6B5A1E, 0 4px 6px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.3)",
             }}
           >
             {text}
@@ -119,7 +139,7 @@ export default function Footer() {
                 className="group relative text-xs text-text-muted/60 transition-colors duration-300 hover:text-text-primary"
               >
                 {label}
-                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#A08035] transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>

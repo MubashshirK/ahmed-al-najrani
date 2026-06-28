@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import { ChevronDown, GraduationCap, FileText } from "lucide-react"
+import { ChevronDown, GraduationCap, FileText, Download } from "lucide-react"
 import { CLIENT } from "@/lib/constants"
 
 const HeroCanvas = dynamic(() => import("@/components/three/HeroCanvas"), { ssr: false })
@@ -45,16 +45,16 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-text-muted"
           >
             <GraduationCap size={14} />
-            <span>King Faisal University · Class of 2026</span>
+            <span>35+ Years in Enterprise AI & Transformation</span>
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
             className="font-heading text-5xl font-bold leading-tight tracking-tight text-center lg:text-left sm:text-6xl lg:text-7xl"
           >
-            {CLIENT.name.split(" ")[0]}
+            {CLIENT.name.split(" ").slice(0, 2).join(" ")}
             <br />
-            {CLIENT.name.split(" ").slice(1).join(" ")}
+            {CLIENT.name.split(" ").slice(2).join(" ")}
           </motion.h1>
 
           <motion.p
@@ -75,7 +75,7 @@ export default function Hero() {
             variants={fadeUp}
             className="flex flex-wrap justify-center gap-3 lg:justify-start"
           >
-            {["2+ Years Leadership", "KAP Studies Expert", "8+ Certifications"].map((item) => (
+            {["35+ Years Experience", "Generative AI Strategist", "Enterprise AI Architect"].map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-muted"
@@ -91,21 +91,19 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-4 pt-2 lg:justify-start"
           >
             <a
-              href="/assets/CV-Ahmed-AlNajrani.pdf"
+              href="/assets/Mohammed-Akhtar-CV.pdf"
               download
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3 text-sm font-medium text-text-inverse transition-all duration-300"
             >
-              <FileText size={16} />
+              <Download size={16} />
               Download CV
               <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
             </a>
             <a
-              href="https://www.linkedin.com/in/ahmed-s-al-najrani-9bb72b296/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:moka2205@gmail.com"
               className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-medium text-text-primary transition-all duration-300 hover:bg-surface"
             >
-              LinkedIn Profile
+              Contact Me
             </a>
           </motion.div>
         </motion.div>
@@ -118,16 +116,15 @@ export default function Hero() {
         >
           <div className="h-72 w-72 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
             <div className="absolute inset-0 scale-110 rounded-full bg-gradient-to-br from-warm/20 to-warm/5 blur-3xl" />
-            <div className="absolute -inset-3 rounded-[1.25rem] border border-border/60" />
-            <div className="absolute -inset-1.5 rounded-[1.15rem] border border-border/30" />
-            <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-xl">
-              <div className="absolute bottom-0 left-0 right-0 z-10 h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            <div className="absolute -inset-3 rounded-full border border-border/80 dark:border-border/60" />
+            <div className="absolute -inset-1.5 rounded-full border border-border/60 dark:border-border/30" />
+            <div className="relative h-full w-full overflow-hidden rounded-full border border-border">
               <Image
-                src="/images/ahmed.jpg"
+                src="/images/dr-mohammed.png"
                 alt={CLIENT.name}
                 fill
                 priority
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>

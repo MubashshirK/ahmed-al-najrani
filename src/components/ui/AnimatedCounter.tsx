@@ -45,7 +45,15 @@ export default function AnimatedCounter({ value, suffix = "", label, delay = 0 }
       transition={{ delay, duration: 0.5 }}
       className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-      <span className="bg-gradient-to-r from-tint-amber to-tint-blue bg-clip-text font-heading text-5xl font-bold text-transparent">
+      <span
+        className="font-heading text-5xl font-bold"
+        style={{
+          background: "linear-gradient(315deg, #6B5A1E 0%, #A08035 30%, #C9A84C 50%, #A08035 70%, #6B5A1E 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          filter: "drop-shadow(0 2px 4px rgba(139,105,20,0.5))",
+        }}
+      >
         {count}
         {suffix}
       </span>
