@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Mail, MapPin, Globe, Phone } from "lucide-react"
-import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
 import { Particles } from "@/components/three/Particles"
 import { useTheme } from "@/components/ui/ThemeProvider"
 
@@ -50,7 +50,7 @@ export default function Contact() {
         size={0.6}
       />
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "radial-gradient(circle, var(--accent) 1px, transparent 1px)",
@@ -59,15 +59,6 @@ export default function Contact() {
       />
 
       <div className="relative mx-auto max-w-4xl px-6">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className={sectionLabel}
-        >
-          {"// contact"}
-        </motion.p>
-
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -81,9 +72,16 @@ export default function Contact() {
           >
             Get in Touch
           </motion.h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="section-heading-line origin-left"
+          />
           <motion.p
             variants={fadeInUp}
-            className="mt-3 max-w-lg text-base leading-relaxed text-text-muted"
+            className="mt-3 max-w-lg text-lg leading-relaxed text-text-primary/80"
           >
             Available for AI transformation advisory, enterprise consulting, research collaborations, and executive workshops.
           </motion.p>
@@ -100,7 +98,7 @@ export default function Contact() {
                     <Icon size={18} style={{ color: method.color }} />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-wide text-text-muted">
+                    <p className="text-sm font-medium uppercase tracking-wide text-text-muted">
                       {method.label}
                     </p>
                     <p className="mt-1 truncate text-sm text-text-primary">

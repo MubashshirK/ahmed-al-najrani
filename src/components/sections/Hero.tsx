@@ -29,7 +29,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 m-auto h-[700px] w-[700px] rounded-full"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(200,168,78,0.12) 0%, rgba(200,168,78,0.04) 50%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, rgba(200,168,78,0.03) 0%, rgba(200,168,78,0.01) 50%, transparent 70%)",
         }}
       />
 
@@ -59,14 +59,14 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="text-xl font-medium text-text-muted text-center lg:text-left sm:text-xl"
+            className="text-xl font-medium text-text-primary/80 text-center lg:text-left sm:text-xl"
           >
             {CLIENT.title}
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="max-w-xl text-base text-text-muted/80 text-center lg:text-left"
+            className="max-w-xl text-lg text-text-primary/80 text-center lg:text-left leading-relaxed"
           >
             {CLIENT.subtitle}
           </motion.p>

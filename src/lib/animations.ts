@@ -29,5 +29,3 @@ export const slideInRight: Variants = {
   hidden: { opacity: 0, x: 40 },
   visible: { opacity: 1, x: 0 },
 }
-
-export const sectionLabel = "text-xs tracking-[0.2em] uppercase text-[#c8a040] font-mono mb-4"

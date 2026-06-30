@@ -93,10 +93,10 @@ export default function Footer() {
         size={0.5}
       />
       {/* Subtle bottom-centered radial gradient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,var(--warm)_0%,transparent_70%)] opacity-[0.06] pointer-events-none" />
-      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c8a040]/20 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,var(--warm)_0%,transparent_70%)] opacity-[0.08] pointer-events-none" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c8a040]/30 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-14 md:py-20">
         {/* Interactive flashlight text container with delayed scroll-in viewport animation */}
         <motion.div
           ref={ref}
@@ -112,7 +112,7 @@ export default function Footer() {
           className="relative cursor-default select-none text-center font-heading text-[clamp(2rem,6vw,6rem)] font-black leading-none tracking-tighter py-4 max-w-4xl mx-auto"
         >
           {/* Muted background text */}
-          <p className="text-warm/15 dark:text-warm/10" aria-hidden="true">
+          <p className="text-warm/20 dark:text-warm/15" aria-hidden="true">
             {text}
           </p>
           {/* Highlighted text revealed by mask */}
@@ -129,14 +129,14 @@ export default function Footer() {
           </p>
         </motion.div>
 
-        <div className="mt-12 flex flex-col items-center gap-6 md:mt-16">
+        <div className="mt-8 flex flex-col items-center gap-6 md:mt-10">
           {/* Navigation Links */}
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
             {NAV_LINKS.map(({ label, href }) => (
               <button
                 key={href}
                 onClick={() => scrollTo(href)}
-                className="group relative text-xs text-text-muted/60 transition-colors duration-300 hover:text-text-primary"
+                className="group relative text-xs text-text-muted/80 transition-colors duration-300 hover:text-text-primary"
               >
                 {label}
                 <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#c8a040] transition-all duration-300 group-hover:w-full" />
@@ -145,7 +145,7 @@ export default function Footer() {
           </div>
 
           {/* Credits and Copyright */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 text-[10px] text-text-muted/40">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 text-[10px] text-text-muted/70">
             <span className="justify-self-end">&copy; {new Date().getFullYear()} {CLIENT.name}</span>
             <span className="h-3 w-px bg-border" />
             <a href="https://mubashshir.vercel.app" target="_blank" rel="noopener noreferrer" className="justify-self-start hover:text-text-primary transition-colors duration-300">Design & Built by Mubashshir Khan</a>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { CERTIFICATIONS } from "@/lib/constants"
-import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
 import { Award, GraduationCap } from "lucide-react"
 
 const degrees = [
@@ -69,18 +69,20 @@ export default function Education() {
   return (
     <section id="education" className="relative py-24">
       <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ background: "radial-gradient(ellipse at 20% 30%, var(--warm) 0%, transparent 60%)" }}
       />
       <div className="relative mx-auto max-w-7xl px-6">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className={sectionLabel}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          {"// education & certifications"}
-        </motion.p>
+          <h2 className="section-heading-title">Education & Certifications</h2>
+          <div className="section-heading-line" />
+        </motion.div>
 
         <motion.div
           variants={staggerContainer}
@@ -92,7 +94,7 @@ export default function Education() {
           {degrees.map((edu) => (
             <motion.div key={edu.degree} variants={fadeInUp} className="w-full">
               <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="h-1 bg-gradient-to-r from-[#c8a040]/10 via-[#c8a040]/30 to-[#c8a040]/10" />
+                <div className="h-1 bg-gradient-to-r from-[#c8a040]/20 via-[#c8a040]/40 to-[#c8a040]/20" />
 
                 <div className="p-6 sm:p-8">
                   <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-6">
@@ -117,7 +119,7 @@ export default function Education() {
                           <h3 className="font-heading text-xl font-bold text-text-primary sm:text-2xl">
                             {edu.university}
                           </h3>
-                          <p className="mt-1 text-sm text-text-primary/70 sm:text-base">
+                          <p className="mt-1 text-sm text-text-muted sm:text-base">
                             {edu.degree}
                           </p>
                         </div>
@@ -129,13 +131,13 @@ export default function Education() {
 
                       <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
                         <div>
-                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted">
                             Duration
                           </p>
                           <p className="mt-0.5 text-sm text-text-primary">{edu.period}</p>
                         </div>
                         <div>
-                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                          <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted">
                             Status
                           </p>
                           <span className="mt-0.5 inline-flex items-center gap-1.5 text-sm text-text-primary">
@@ -148,14 +150,14 @@ export default function Education() {
                   </div>
 
                   <div className="mt-6 border-t border-border/50 pt-6">
-                    <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted/50">
+                    <p className="text-[11px] font-medium uppercase tracking-wider text-text-muted">
                       Focus Areas
                     </p>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {edu.focus.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-lg border border-border bg-bg px-2.5 py-1 text-[11px] text-text-muted"
+                          className="rounded-lg border border-border bg-surface-elevated px-2.5 py-1 text-[11px] text-text-muted"
                         >
                           {tag}
                         </span>
@@ -169,16 +171,19 @@ export default function Education() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 flex items-center gap-3"
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          <h2 className="font-heading text-xl font-bold text-text-primary">Certifications</h2>
-          <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
-            {CERTIFICATIONS.length}
-          </span>
-          <div className="ml-auto hidden h-px flex-1 bg-gradient-to-r from-border to-transparent sm:block" />
+          <div className="flex items-center gap-3">
+            <h2 className="section-heading-title">Certifications</h2>
+            <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
+              {CERTIFICATIONS.length}
+            </span>
+          </div>
+          <div className="section-heading-line" />
         </motion.div>
 
         <motion.div
@@ -195,12 +200,12 @@ export default function Education() {
               <motion.div key={cert.name} variants={fadeInUp} className="flex w-full">
                 <div className="group flex w-full flex-1 items-start gap-4 rounded-xl border border-border bg-surface p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
                   {logo ? (
-                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-white/5 shadow-sm">
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm">
                       <Image
                         src={logo}
                         alt={cert.issuer}
                         fill
-                        className="object-cover"
+                        className="object-contain p-1.5"
                       />
                     </div>
                   ) : (

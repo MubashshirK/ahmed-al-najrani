@@ -22,7 +22,7 @@ export default function SkillCard({ name }: { name: string }) {
         style={{
           backgroundColor: hovered
             ? "var(--accent)"
-            : "color-mix(in srgb, var(--accent) 30%, transparent)",
+            : "color-mix(in srgb, var(--accent) 50%, transparent)",
           transform: hovered ? "scale(1.8)" : undefined,
         }}
       />

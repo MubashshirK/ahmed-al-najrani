@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { NAV_LINKS } from "@/lib/constants"
 import { useTheme } from "./ThemeProvider"
@@ -72,8 +73,13 @@ export default function Navbar() {
               boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.08)" : "none",
             }}
           >
-            <button onClick={() => scrollTo("#hero")} className={`font-heading font-bold tracking-tight text-text-primary transition-all duration-300 ${scrolled ? "px-2 text-sm" : "px-0 text-lg"}`}>
-              M<span className="text-text-muted">.</span>K<span className="text-text-muted">.</span>A
+            <button onClick={() => scrollTo("#hero")} className="flex items-center gap-2 min-w-0">
+              <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-md">
+                <Image src="/AITexNix.webp" alt="AITekNix" fill className="object-contain" />
+              </div>
+              <span className={`font-heading font-semibold tracking-tight text-text-primary whitespace-nowrap transition-all duration-300 ${scrolled ? "text-base" : "text-lg"}`}>
+                Dr. Moka Akhtar - Profile
+              </span>
             </button>
 
             <div className="flex items-center gap-1.5">
@@ -101,7 +107,7 @@ export default function Navbar() {
             animate={{
               y: scrolled ? 16 : 0,
               borderRadius: scrolled ? 100 : 0,
-              maxWidth: scrolled ? 640 : 1440,
+              maxWidth: scrolled ? 860 : 1440,
               paddingTop: scrolled ? 6 : 16,
               paddingBottom: scrolled ? 6 : 16,
               paddingLeft: scrolled ? 8 : 24,
@@ -117,20 +123,32 @@ export default function Navbar() {
           >
             <button
               onClick={() => scrollTo("#hero")}
-              className={`font-heading font-bold tracking-tight text-text-primary transition-all duration-300 ${scrolled ? "px-2 text-sm" : "px-0 text-lg"
-                }`}
+              className="flex items-center gap-2 shrink-0 min-w-0"
             >
-              M<span className="text-text-muted">.</span>K<span className="text-text-muted">.</span>A
+              <div
+                className="relative shrink-0 overflow-hidden rounded-md"
+                style={{
+                  height: scrolled ? 0 : 40,
+                  width: scrolled ? 0 : 40,
+                  opacity: scrolled ? 0 : 1,
+                  transition: "all 0.35s cubic-bezier(0.25,0.1,0.25,1)",
+                }}
+              >
+                <Image src="/AITexNix.webp" alt="AITekNix" fill className="object-contain" />
+              </div>
+              <span className={`font-heading font-semibold tracking-tight text-text-primary whitespace-nowrap transition-all duration-300 ${scrolled ? "text-base" : "text-lg"}`}>
+                Dr. Moka Akhtar - Profile
+              </span>
             </button>
 
-            <div className="flex items-center">
+            <div className="flex items-center gap-1">
               {NAV_LINKS.map(({ label, href }) => (
                 <button
                   key={href}
                   onClick={() => scrollTo(href)}
                   className={`transition-all duration-300 whitespace-nowrap ${scrolled
-                    ? "rounded-full px-3 py-1.5 text-xs font-medium"
-                    : "relative px-3 py-1 text-sm tracking-wide"
+                    ? "rounded-full px-3.5 py-1.5 text-sm font-medium"
+                    : "relative px-3 py-1 text-base tracking-wide"
                     } ${activeSection === href.slice(1)
                       ? scrolled
                         ? "bg-accent text-text-inverse"
@@ -147,9 +165,6 @@ export default function Navbar() {
                   )}
                 </button>
               ))}
-            </div>
-
-            <div className="flex items-center gap-1">
               <button
                 onClick={toggle}
                 className={`rounded-full border border-border text-text-muted transition-all duration-300 hover:text-text-primary ${scrolled ? "p-1.5" : "p-2"

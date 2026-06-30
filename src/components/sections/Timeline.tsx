@@ -4,7 +4,7 @@ import { useRef, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Briefcase, Brain, GraduationCap, Users } from "lucide-react"
 import { EXPERIENCES } from "@/lib/constants"
-import { sectionLabel } from "@/lib/animations"
+
 import { Particles } from "@/components/three/Particles"
 import { useTheme } from "@/components/ui/ThemeProvider"
 
@@ -90,7 +90,7 @@ function TimelineNode({
           {experience.role}
         </h3>
         <p className="mt-1 text-sm font-medium text-text-primary/70">{experience.organization}</p>
-        <p className="mt-3 text-sm leading-relaxed text-text-muted">
+        <p className="mt-3 text-base leading-relaxed text-text-primary/80">
           {experience.description}
         </p>
       </motion.div>
@@ -118,18 +118,20 @@ export default function Timeline() {
         size={0.6}
       />
       <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ background: "radial-gradient(ellipse at center, var(--warm) 0%, transparent 70%)" }}
       />
       <div className="relative mx-auto max-w-5xl px-6">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className={`${sectionLabel} mb-10`}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          {"// Experience"}
-        </motion.p>
+          <h2 className="section-heading-title">Experience</h2>
+          <div className="section-heading-line" />
+        </motion.div>
 
         <div ref={ref} className="relative">
           <div className="absolute left-[18px] top-0 h-full w-px bg-border md:left-1/2 md:-translate-x-px">

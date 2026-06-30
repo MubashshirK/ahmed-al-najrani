@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SKILL_DOMAINS } from "@/lib/constants"
-import { sectionLabel, fadeInUp, staggerContainer } from "@/lib/animations"
+import { fadeInUp, staggerContainer } from "@/lib/animations"
 import { Brain, BarChart3, Users } from "lucide-react"
 import SkillCard from "@/components/ui/SkillCard"
 
@@ -17,19 +17,18 @@ const domainColors = [
 export default function Expertise() {
   return (
     <section id="expertise" className="relative py-24">
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{ background: "radial-gradient(ellipse at 70% 30%, var(--warm) 0%, transparent 60%)" }}
-      />
+      <div className="absolute inset-0 pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className={sectionLabel}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          {"// expertise"}
-        </motion.p>
+          <h2 className="section-heading-title">Expertise</h2>
+          <div className="section-heading-line" />
+        </motion.div>
 
         <motion.div
           variants={staggerContainer}
@@ -58,7 +57,7 @@ export default function Expertise() {
                         <Icon size={20} className="domain-icon" />
                       </motion.div>
                       <div>
-                        <p className="domain-num font-mono text-[11px] font-medium tracking-widest text-text-muted/40">
+                        <p className="domain-num font-mono text-[11px] font-medium tracking-widest text-text-muted/70">
                           {String(i + 1).padStart(2, "0")}
                         </p>
                         <h3 className="domain-title mt-1 font-heading text-2xl font-bold text-text-primary md:text-3xl">
