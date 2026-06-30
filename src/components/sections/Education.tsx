@@ -104,6 +104,7 @@ export default function Education() {
                           src={edu.logo}
                           alt={edu.university}
                           fill
+                          sizes="(max-width: 640px) 56px, 64px"
                           className="object-contain p-2"
                         />
                       </div>
@@ -205,6 +206,7 @@ export default function Education() {
                         src={logo}
                         alt={cert.issuer}
                         fill
+                        sizes="48px"
                         className="object-contain p-1.5"
                       />
                     </div>

@@ -124,6 +124,7 @@ export default function Hero() {
                 alt={CLIENT.name}
                 fill
                 priority
+                sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
                 className="object-contain"
               />
             </div>

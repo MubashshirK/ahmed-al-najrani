@@ -84,6 +84,7 @@ function Lightbox({
           alt={`Image ${current + 1}`}
           width={1600}
           height={1200}
+          loading="eager"
           className="h-auto max-h-[90vh] w-auto max-w-[90vw] rounded-xl object-contain"
         />
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white">
@@ -141,6 +142,7 @@ export default function Honors() {
                             src={src}
                             alt={`${honor.title} - Image ${imgIdx + 1}`}
                             fill
+                            sizes="(max-width: 768px) 50vw, 21vw"
                             className="object-cover transition-all duration-500 group-hover/img:scale-105"
                           />
                           <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover/img:bg-black/30">

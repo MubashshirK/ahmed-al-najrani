@@ -13,6 +13,10 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero")
   const { theme, toggle } = useTheme()
 
+  const mobileBgScrolled = theme === "dark" ? "rgba(30,36,50,0.8)" : "rgba(255,255,255,0.8)"
+  const mobileBgDefault = theme === "dark" ? "rgba(30,36,50,0.6)" : "rgba(255,255,255,0.6)"
+  const mobileBorder = theme === "dark" ? "rgba(38,45,62,0.6)" : "rgba(229,229,229,0.6)"
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
     onScroll()
@@ -51,8 +55,10 @@ export default function Navbar() {
         {/* Mobile Navbar */}
         <div className="pointer-events-none flex justify-center md:hidden">
           <motion.nav
-            animate={{
-              y: scrolled ? 12 : 0,
+            animate={{ y: scrolled ? 12 : 0 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="pointer-events-auto flex w-full items-center justify-between gap-1 backdrop-blur-xl"
+            style={{
               borderRadius: scrolled ? 100 : 0,
               paddingTop: scrolled ? 6 : 12,
               paddingBottom: scrolled ? 6 : 12,
@@ -60,22 +66,15 @@ export default function Navbar() {
               marginRight: scrolled ? 60 : 0,
               paddingLeft: scrolled ? 10 : 20,
               paddingRight: scrolled ? 10 : 20,
-              backgroundColor: scrolled
-                ? "color-mix(in srgb, var(--surface-elevated) 80%, transparent)"
-                : "color-mix(in srgb, var(--surface-elevated) 60%, transparent)",
-            }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="pointer-events-auto flex w-full items-center justify-between gap-1 backdrop-blur-xl"
-            style={{
-              border: scrolled
-                ? "1px solid color-mix(in srgb, var(--border) 60%, transparent)"
-                : "1px solid transparent",
+              backgroundColor: scrolled ? mobileBgScrolled : mobileBgDefault,
+              border: scrolled ? `1px solid ${mobileBorder}` : "1px solid transparent",
               boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.08)" : "none",
+              transition: "border-radius 0.4s cubic-bezier(0.25,0.1,0.25,1), padding 0.4s cubic-bezier(0.25,0.1,0.25,1), margin 0.4s cubic-bezier(0.25,0.1,0.25,1), background-color 0.4s cubic-bezier(0.25,0.1,0.25,1), border-color 0.4s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.4s cubic-bezier(0.25,0.1,0.25,1)",
             }}
           >
             <button onClick={() => scrollTo("#hero")} className="flex items-center gap-2 min-w-0">
               <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-md">
-                <Image src="/AITexNix.webp" alt="AITekNix" fill className="object-contain" />
+                <Image src="/AITexNix.webp" alt="AITekNix" fill sizes="32px" className="object-contain" />
               </div>
               <span className={`font-heading font-semibold tracking-tight text-text-primary whitespace-nowrap transition-all duration-300 ${scrolled ? "text-base" : "text-lg"}`}>
                 Dr. Moka Akhtar - Profile
@@ -104,8 +103,10 @@ export default function Navbar() {
         {/* Desktop Navbar */}
         <div className="pointer-events-none hidden justify-center md:flex">
           <motion.nav
-            animate={{
-              y: scrolled ? 16 : 0,
+            animate={{ y: scrolled ? 16 : 0 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="pointer-events-auto flex w-full items-center justify-between gap-1 backdrop-blur-2xl"
+            style={{
               borderRadius: scrolled ? 100 : 0,
               maxWidth: scrolled ? 860 : 1440,
               paddingTop: scrolled ? 6 : 16,
@@ -113,12 +114,9 @@ export default function Navbar() {
               paddingLeft: scrolled ? 8 : 24,
               paddingRight: scrolled ? 8 : 24,
               backgroundColor: scrolled ? "var(--surface-elevated)" : "transparent",
-            }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="pointer-events-auto flex w-full items-center justify-between gap-1 backdrop-blur-2xl"
-            style={{
               border: scrolled ? "1px solid var(--border)" : "1px solid transparent",
               boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.1)" : "none",
+              transition: "border-radius 0.4s cubic-bezier(0.25,0.1,0.25,1), max-width 0.4s cubic-bezier(0.25,0.1,0.25,1), padding 0.4s cubic-bezier(0.25,0.1,0.25,1), background-color 0.4s cubic-bezier(0.25,0.1,0.25,1), border-color 0.4s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.4s cubic-bezier(0.25,0.1,0.25,1)",
             }}
           >
             <button
@@ -134,7 +132,7 @@ export default function Navbar() {
                   transition: "all 0.35s cubic-bezier(0.25,0.1,0.25,1)",
                 }}
               >
-                <Image src="/AITexNix.webp" alt="AITekNix" fill className="object-contain" />
+                <Image src="/AITexNix.webp" alt="AITekNix" fill sizes="40px" className="object-contain" />
               </div>
               <span className={`font-heading font-semibold tracking-tight text-text-primary whitespace-nowrap transition-all duration-300 ${scrolled ? "text-base" : "text-lg"}`}>
                 Dr. Moka Akhtar - Profile
