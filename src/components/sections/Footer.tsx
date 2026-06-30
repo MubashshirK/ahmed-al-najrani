@@ -119,8 +119,8 @@ export default function Footer() {
           <p
             className="absolute inset-0 py-4"
             style={{
-              maskImage: `radial-gradient(${isTouchDevice ? 240 : 160}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(${isTouchDevice ? 240 : 160}px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              maskImage: isTouchDevice ? `radial-gradient(350px at ${pos.x}px ${pos.y}px, black 20%, transparent 55%)` : `radial-gradient(160px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
+              WebkitMaskImage: isTouchDevice ? `radial-gradient(350px at ${pos.x}px ${pos.y}px, black 20%, transparent 55%)` : `radial-gradient(160px at ${pos.x}px ${pos.y}px, black 25%, transparent 100%)`,
               color: "#e8c860",
               textShadow: "0 1px 0 #a08030, 0 2px 0 #908030, 0 3px 0 #8a7020, 0 4px 6px rgba(0,0,0,0.4), 0 0 20px rgba(232,200,96,0.3)",
             }}
@@ -145,10 +145,10 @@ export default function Footer() {
           </div>
 
           {/* Credits and Copyright */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 text-[10px] text-text-muted/70">
-            <span className="justify-self-end">&copy; {new Date().getFullYear()} {CLIENT.name}</span>
-            <span className="h-3 w-px bg-border" />
-            <a href="https://mubashshir.vercel.app" target="_blank" rel="noopener noreferrer" className="justify-self-start hover:text-text-primary transition-colors duration-300">Design & Built by Mubashshir Khan</a>
+          <div className="flex flex-col items-center gap-2 text-[10px] text-text-muted/70 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-4">
+            <span className="sm:justify-self-end">&copy; {new Date().getFullYear()} {CLIENT.name}</span>
+            <span className="hidden sm:block h-3 w-px bg-border" />
+            <a href="https://mubashshir.vercel.app" target="_blank" rel="noopener noreferrer" className="sm:justify-self-start hover:text-text-primary transition-colors duration-300">Design & Built by Mubashshir Khan</a>
           </div>
         </div>
       </div>

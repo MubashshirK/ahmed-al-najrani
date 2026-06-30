@@ -19,9 +19,9 @@ const skillRadar = [
 
 function RadarChart() {
   const [hovered, setHovered] = useState<number | null>(null)
-  const cx = 250
-  const cy = 250
-  const r = 155
+  const cx = 375
+  const cy = 375
+  const r = 390
   const levels = 5
   const count = skillRadar.length
   const angleStep = (Math.PI * 2) / count
@@ -46,7 +46,7 @@ function RadarChart() {
         points={points}
         fill="none"
         stroke="rgba(100,200,255,0.08)"
-        strokeWidth="0.8"
+        strokeWidth="1.4"
       />
     )
   })
@@ -89,19 +89,19 @@ function RadarChart() {
         <circle
           cx={v.x}
           cy={v.y}
-          r={isHovered ? 14 : 6}
-          fill={skill.color}
-          opacity={isHovered ? 0.2 : 0.25}
-          style={{ transition: "all 0.3s ease" }}
-        />
-        <circle
-          cx={v.x}
-          cy={v.y}
-          r={isHovered ? 5.5 : 3}
-          fill={skill.color}
-          style={{ transition: "all 0.3s ease" }}
-        />
-        <circle cx={v.x} cy={v.y} r={1.2} fill="#fff" />
+        r={isHovered ? 40 : 17}
+        fill={skill.color}
+        opacity={isHovered ? 0.2 : 0.25}
+        style={{ transition: "all 0.3s ease" }}
+      />
+      <circle
+        cx={v.x}
+        cy={v.y}
+        r={isHovered ? 17 : 9}
+        fill={skill.color}
+        style={{ transition: "all 0.3s ease" }}
+      />
+      <circle cx={v.x} cy={v.y} r={3.5} fill="#fff" />
       </g>
     )
   })
@@ -110,8 +110,8 @@ function RadarChart() {
     const v = getVertex(skill.level, i)
     const angle = angleStep * i - Math.PI / 2
     const isHovered = hovered === i
-    const px = v.x + 14 * Math.cos(angle)
-    const py = v.y + 14 * Math.sin(angle)
+    const px = v.x - 42 * Math.cos(angle)
+    const py = v.y - 42 * Math.sin(angle)
     return (
       <text
         key={`pct-${i}`}
@@ -120,7 +120,7 @@ function RadarChart() {
         textAnchor="middle"
         dominantBaseline="central"
         fill={skill.color}
-        fontSize={isHovered ? "12" : "10"}
+        fontSize={isHovered ? "36" : "30"}
         fontWeight="700"
         fontFamily="var(--font-mono), monospace"
         opacity={hovered !== null && !isHovered ? 0.3 : 1}
@@ -136,24 +136,43 @@ function RadarChart() {
     const cos = Math.cos(angle)
     const sin = Math.sin(angle)
     const Icon = skill.icon
-    const isTop = sin < -0.9
     const isHovered = hovered === i
-
-    let textAnchor: "start" | "end" | "middle" = "middle"
-    if (cos > 0.15) textAnchor = "start"
-    else if (cos < -0.15) textAnchor = "end"
-
-    let dominantBaseline: "auto" | "hanging" | "middle" = "middle"
-    if (isTop) dominantBaseline = "auto"
-    else if (sin > 0.9) dominantBaseline = "hanging"
 
     const labelDistance = r + 38
     const lx = cx + labelDistance * cos
     const ly = cy + labelDistance * sin
 
-    const isLeadership = skill.domain === "Leadership"
-    const iconOffsetX = textAnchor === "start" ? (isLeadership ? -8: -14) : textAnchor === "end" ? (isLeadership ? -24 : 14) : 0
-    const iconOffsetY = dominantBaseline === "auto" ? 12 : dominantBaseline === "hanging" ? -12 : 0
+    const width = 240
+    const height = 65
+
+    let x = lx
+    let y = ly - height / 2
+    let flexDir: "row" | "column" = "row"
+    let justify: string = "flex-start"
+    let align: string = "center"
+
+    if (cos > 0.15) {
+      x = lx
+      flexDir = "row"
+      justify = "flex-start"
+    } else if (cos < -0.15) {
+      x = lx - width
+      flexDir = "row"
+      justify = "flex-end"
+    } else {
+      x = lx - width / 2
+      if (sin < 0) {
+        y = ly - height
+        flexDir = "column"
+        justify = "flex-end"
+        align = "center"
+      } else {
+        y = ly
+        flexDir = "column"
+        justify = "flex-start"
+        align = "center"
+      }
+    }
 
     const labelColor = isHovered ? skill.color : "var(--text-primary)"
     const labelOpacity = hovered !== null && !isHovered ? 0.3 : 1
@@ -165,72 +184,74 @@ function RadarChart() {
         onMouseLeave={() => setHovered(null)}
         style={{ cursor: "pointer", transition: "opacity 0.3s ease", opacity: labelOpacity }}
       >
-        {isTop ? (
-          <>
-            <text
-              x={lx}
-              y={ly}
-              textAnchor={textAnchor}
-              dominantBaseline="auto"
-              fill={labelColor}
-              fontSize={isHovered ? "11" : "10"}
-              fontWeight="700"
-              fontFamily="var(--font-heading), sans-serif"
-              letterSpacing="0.05em"
-              style={{ transition: "fill 0.3s ease" }}
-            >
-              {skill.domain}
-            </text>
-            <foreignObject
-              x={lx - 10}
-              y={ly + 4}
-              width={20}
-              height={20}
-              style={{ color: skill.color }}
-            >
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
-                <Icon size={14} />
-              </div>
-            </foreignObject>
-          </>
-        ) : (
-          <>
-            <foreignObject
-              x={lx + iconOffsetX - 10}
-              y={ly + iconOffsetY - 10}
-              width={20}
-              height={20}
-              style={{ color: skill.color }}
-            >
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
-                <Icon size={14} />
-              </div>
-            </foreignObject>
-            <text
-              x={lx}
-              y={ly + (iconOffsetY ? iconOffsetY + 12 : 0)}
-              textAnchor={textAnchor}
-              dominantBaseline="central"
-              fill={labelColor}
-              fontSize={isHovered ? "11" : "10"}
-              fontWeight="700"
-              fontFamily="var(--font-heading), sans-serif"
-              letterSpacing="0.05em"
-              style={{ transition: "fill 0.3s ease" }}
-            >
-              {skill.domain}
-            </text>
-          </>
-        )}
+        <foreignObject
+          x={x}
+          y={y}
+          width={width}
+          height={height}
+          style={{ overflow: "visible" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: flexDir,
+              justifyContent: justify,
+              alignItems: align,
+              gap: "12px",
+              width: "100%",
+              height: "100%",
+              color: labelColor,
+              transition: "color 0.3s ease",
+            }}
+          >
+            {cos < -0.15 ? (
+              <>
+                 <span
+                   style={{
+                     fontFamily: "var(--font-heading), sans-serif",
+                     fontSize: isHovered ? "40px" : "34px",
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
+                    whiteSpace: "nowrap",
+                    transition: "font-size 0.3s ease",
+                  }}
+                >
+                  {skill.domain}
+                </span>
+                <div style={{ color: skill.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={52} />
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{ color: skill.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={52} />
+                </div>
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading), sans-serif",
+                    fontSize: isHovered ? "40px" : "34px",
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
+                    whiteSpace: "nowrap",
+                    transition: "font-size 0.3s ease",
+                  }}
+                >
+                  {skill.domain}
+                </span>
+              </>
+            )}
+          </div>
+        </foreignObject>
       </g>
     )
   })
 
   const corners = [
-    { x: 20, y: 20 },
-    { x: 480, y: 20 },
-    { x: 20, y: 480 },
-    { x: 480, y: 480 },
+    { x: 30, y: 30 },
+    { x: 720, y: 30 },
+    { x: 30, y: 720 },
+    { x: 720, y: 720 },
   ]
 
   const tooltipData = hovered !== null ? skillRadar[hovered] : null
@@ -239,8 +260,9 @@ function RadarChart() {
   return (
     <div className="relative h-full w-full">
       <motion.svg
-        viewBox="-10 -10 520 520"
+        viewBox="-315 -295 1380 1340"
         className="h-full w-full"
+        style={{ overflow: "visible" }}
         initial={{ opacity: 0, scale: 0.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -266,15 +288,15 @@ function RadarChart() {
           </filter>
         </defs>
 
-        <circle cx={cx} cy={cy} r={r + 40} fill="url(#radarGlow)" />
+        <circle cx={cx} cy={cy} r={r + 110} fill="url(#radarGlow)" />
 
         {corners.map((c, i) => (
           <g key={i} opacity={0.15}>
             <polygon
-              points={hexPoints(c.x, c.y, 14)}
+              points={hexPoints(c.x, c.y, 40)}
               fill="none"
               stroke="var(--tint-blue)"
-              strokeWidth="0.8"
+              strokeWidth="1.4"
             />
           </g>
         ))}
@@ -286,14 +308,14 @@ function RadarChart() {
           points={dataPointStrings.join(" ")}
           fill="url(#radarGlow)"
           stroke="url(#radarBorder)"
-          strokeWidth="3"
-          filter="url(#glow)"
+      strokeWidth="5"
+      filter="url(#glow)"
         />
         <polygon
           points={dataPointStrings.join(" ")}
           fill="none"
           stroke="#22d3ee"
-          strokeWidth="1.5"
+          strokeWidth="3"
           opacity="0.9"
         />
 
@@ -311,8 +333,8 @@ function RadarChart() {
             transition={{ duration: 0.2 }}
             className="pointer-events-none absolute z-10 rounded-xl border border-border bg-surface-elevated/95 px-4 py-3 shadow-2xl backdrop-blur-xl"
             style={{
-              left: `${(tooltipVertex.x / 500) * 100}%`,
-              top: `${(tooltipVertex.y / 500) * 100}%`,
+              left: `${((tooltipVertex.x + 315) / 1380) * 100}%`,
+              top: `${((tooltipVertex.y + 295) / 1340) * 100}%`,
               transform: "translate(-50%, -130%)",
             }}
           >
@@ -401,7 +423,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center lg:col-span-2"
           >
-            <div className="w-full max-w-[460px] aspect-square flex items-center justify-center -mt-12">
+            <div className="w-full max-w-[460px] aspect-square flex items-center justify-center mt-6 lg:mt-0" style={{ marginTop: "-40px" }}>
               <RadarChart />
             </div>
           </motion.div>
