@@ -64,11 +64,59 @@ export const EXPERIENCES = [
   },
 ]
 
+export interface Honor {
+  title: string
+  role: string
+  event: string
+  date: string
+  organizers: string
+  location: string
+  images: string[]
+  highlights: string[]
+  tags: string[]
+}
+
+export const HONORS: Honor[] = [
+  {
+    title: "Expert Resource Person & Felicitations at the Round Table Conference on Ethical AI",
+    role: "Invited Resource Person, Panelist, and Keynote Speaker",
+    event: "Round Table Conference on Ethical AI: Balancing Innovation, Integrity and Inclusion in Higher Education",
+    date: "17th March 2026",
+    organizers: "Rayat Centenary Innovation and Incubation Foundation",
+    location: "Kharghar, Navi Mumbai, India",
+    images: ["/assets/honor-award1.webp", "/assets/honor-award2.webp"],
+    highlights: [
+      "Delivered expert address on balancing technological innovation with integrity and inclusivity in higher education",
+      "Participated in traditional lamp-lighting inauguration ceremony",
+      "Contributed industry insights during round-table panel deliberations",
+      "Honored with ceremonial plaque, commemorative award, and floral bouquet",
+    ],
+    tags: ["Ethical AI", "Higher Education", "Keynote Speaker", "Panelist"],
+  },
+  {
+    title: "Keynote Speaker & Felicitations at ICETCISM 2026",
+    role: "Invited Keynote Speaker and Honored Guest",
+    event: "International Conference on Emerging Technologies in Computing, Intelligent Systems and Management (ICETCISM 2026)",
+    date: "26th June 2026",
+    organizers: "MET Institute of Computer Science, MET Bhujbal Knowledge City, Mumbai (in collaboration with ICT Academy)",
+    location: "Mumbai, India",
+    images: ["/assets/honor-award3.webp", "/assets/honor-award4.webp"],
+    highlights: [
+      "Delivered central Keynote Address on forward-looking paradigms in computing and intelligent enterprise systems",
+      "Participated as honored dignitary in official launch of conference proceedings",
+      "Honored on stage with framed traditional artwork memento and token of appreciation",
+      "Engaged in networking sessions with faculty, international speakers, researchers, and students",
+    ],
+    tags: ["International Conference", "Keynote Speaker", "Emerging Technologies", "Computing & AI"],
+  },
+]
+
 export const NAV_LINKS = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Expertise", href: "#expertise" },
+  { label: "Honors", href: "#honors" },
   { label: "Contact", href: "#contact" },
 ]
